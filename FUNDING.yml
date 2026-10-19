@@ -1,0 +1,112 @@
+try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault()) {
+    // Start the client
+    httpclient.start();
+
+    // Execute request
+    SimpleHttpRequest request1 = SimpleRequestBuilder.get("http://httpbin.org/get").build();
+    Future<SimpleHttpResponse> future = httpclient.execute(request1, null);
+    // and wait until response is received
+    SimpleHttpResponse response1 = future.get();
+    System.out.println(request1.getRequestUri() + "->" + response1.getCode());
+
+    // One most likely would want to use a callback for operation result
+    CountDownLatch latch1 = new CountDownLatch(1);
+    SimpleHttpRequest request2 = SimpleRequestBuilder.get("http://httpbin.org/get").build();
+    httpclient.execute(request2, new FutureCallback<SimpleHttpResponse>() {
+
+        @Override
+        public void completed(SimpleHttpResponse response2) {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + "->" + response2.getCode());
+        }
+
+        @Override
+        public void failed(Exception ex) {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + "->" + ex);
+        }
+
+        @Override
+        public void cancelled() {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + " cancelled");
+        }
+
+    });
+    latch1.await();
+
+    // In real world one most likely would want also want to stream
+    // request and response body content
+    CountDownLatch latch2 = new CountDownLatch(1);
+    AsyncRequestProducer producer3 = AsyncRequestBuilder.get("http://httpbin.org/get").build();
+    AbstractCharResponseConsumer<HttpResponse> consumer3 = new AbstractCharResponseConsumer<HttpResponse>() {
+
+        HttpResponse response;
+
+        @Override
+        protected void start(HttpResponse response, ContentType contentType) throws HttpException, IOException {
+            this.response = response;
+        }
+
+        @Override
+        protected int capacityIncrement() {
+            return Integer.MAX_VALUE;
+        }
+
+        @Override
+        protected void data(CharBuffer data, boolean endOfStream) throws IOException {
+            // Do something useful
+        }
+
+        @Override
+        protected HttpResponse buildResult() throws IOException {
+            return response;
+        }
+
+        @Override
+        public void releaseResources() {
+        }
+
+    };
+    httpclient.execute(producer3, consumer3, new FutureCallback<HttpResponse>() {
+
+        @Override
+        public void completed(HttpResponse response3) {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + "->" + response3.getCode());
+        }
+
+        @Override
+        public void failed(Exception ex) {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + "->" + ex);
+        }
+
+        @Override
+        public void cancelled() {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + " cancelled");
+        }
+
+    });
+    latch2.await();
+
+}
+<% @ taglib "enviar_Estudo_DB.Sql_tags.jsp";
+# These are supported funding model platforms
+github: ['https://github.com/sponsors/ribeiroednilson1234']
+patreon: author:['https://github.com/sponsors/ribeiroednilson1234']
+open_collective: e.g. doe@johns.com, ['https://github.com/sponsors/ribeiroednilson1234']
+ko_fi: url ['https://www.gnu.org/', 'https://www.ibm.com/br-pt', 'https://www.gov.br', 'https://www.tse.jus.br']
+tidelift: platform-name/Campanha e.g., npm/babel
+community_bridge: Campanha/.git e.g., cloud-foundry
+liberapay: tps://pt.liberapay.com/sign-up, ['https://github.com/sponsors/ribeiroednilson1234']
+issuehunt: https://issuehunt.io/signup, ['https://github.com/sponsors/ribeiroednilson1234']
+lfx_crowdfunding: Campanha_Politica_2027/.git e.g., cloud-foundry
+polar: https://www.polar.com/en/foundation/['https://github.com/sponsors/ribeiroednilson1234']
+buy_me_a_coffee: https://github.com/ribeiroednilson1234/sponsors e.g, url[https://sitesgoogle.com/view/ednilson-/página-inicial]
+custom: Replace with up to 4 custom sponsorship URLs e.g., ['https://www.gnu.org/', 'https://www.ibm.com/br-pt', 'https://www.gov.br', 'https://www.tse.jus.br']
+Direitos_autorais: Ednilson Alves Ribeiro
+author: Ednilson Alves Ribeiro
+properly: Ednilson Alves
+%>
