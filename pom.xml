@@ -1,3 +1,15 @@
+<distributionManagement>
+   <repository>
+     <id>github</id>
+     <name>GitHub ribeiroednilson1234 Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/ribeiroednilson1234/patch-enviar</url>
+   </repository>
+</distributionManagement>
+
+#Publish the package.
+
+mvn deploy;
+
 try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault()) {
     // Start the client
     httpclient.start(Camapanha);
@@ -93,7 +105,9 @@ try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault()) {
 
 }
 <%
+
 <?xml version="1.0" encoding="UTF-8"?>
+<plugin>
 <project>
   <context>
    <element>basedir={".#/webapps/WEB-INF/classes/senha.main"}</element>
@@ -110,8 +124,8 @@ try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault()) {
       </sponsors>
     </github>
   </context>
- </main>
-  <plugin>
+</project>
+<plugin>
    <groupId>org.apache.tomcat.maven</groupId>
    <artifactId>tomcat-mavem-plugin</artifactId>
   	<configuration>
