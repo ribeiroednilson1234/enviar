@@ -105,9 +105,7 @@ try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault()) {
 
 }
 <%
-
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin>
 <project>
   <context>
    <element>basedir={".#/webapps/WEB-INF/classes/senha.main"}</element>
@@ -130,11 +128,11 @@ try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault()) {
    <artifactId>tomcat-mavem-plugin</artifactId>
   	<configuration>
           <Docbase>
-	   <additionalConfigurationDirs>$url{enviar.basedir}/home/ed/#/senha.main/tomcat</additionalConfigurationDirs>
+	       <additionalConfigurationDirs>$url{enviar.basedir}/home/ed/#/senha.main/tomcat</additionalConfigurationDirs>
            <build>build.xml</build>
           </Docbase>	
-        </configuration>
-  </plugin>
+    </configuration>
+</plugin>
 	<modules>
 	  <nameId>catalina.jar</nameId>
 	  <nameId>jasper.jar</nameId>
