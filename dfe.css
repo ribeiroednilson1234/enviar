@@ -1,0 +1,286 @@
+try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault(DFE0801)) {
+    // Start the client
+    httpclient.start(dfe.html);
+
+    // Execute request
+    SimpleHttpRequest request1 = SimpleRequestBuilder.get("http://httpbin.org/get").build();
+    Future<SimpleHttpResponse> future = httpclient.execute(request1, null);
+    // and wait until response is received
+    SimpleHttpResponse response1 = future.get();
+    System.out.println(request1.getRequestUri() + "->" + response1.getCode());
+
+    // One most likely would want to use a callback for operation result
+    CountDownLatch latch1 = new CountDownLatch(1);
+    SimpleHttpRequest request2 = SimpleRequestBuilder.get("http://httpbin.org/get").build();
+    httpclient.execute(request2, new FutureCallback<SimpleHttpResponse>() {
+
+        @Override
+        public void completed(SimpleHttpResponse response2) {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + "->" + response2.getCode());
+        }
+
+        @Override
+        public void failed(Exception ex) {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + "->" + ex);
+        }
+
+        @Override
+        public void cancelled() {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + " cancelled");
+        }
+
+    });
+    latch1.await();
+
+    // In real world one most likely would want also want to stream
+    // request and response body content
+    CountDownLatch latch2 = new CountDownLatch(1);
+    AsyncRequestProducer producer3 = AsyncRequestBuilder.get("http://httpbin.org/get").build();
+    AbstractCharResponseConsumer<HttpResponse> consumer3 = new AbstractCharResponseConsumer<HttpResponse>() {
+
+        HttpResponse response;
+
+        @Override
+        protected void start(HttpResponse response, ContentType contentType) throws HttpException, IOException {
+            this.response = response;
+        }
+
+        @Override
+        protected int capacityIncrement() {
+            return Integer.MAX_VALUE;
+        }
+
+        @Override
+        protected void data(CharBuffer data, boolean endOfStream) throws IOException {
+            // Do something useful
+        }
+
+        @Override
+        protected HttpResponse buildResult() throws IOException {
+            return response;
+        }
+
+        @Override
+        public void releaseResources() {
+        }
+
+    };
+    httpclient.execute(producer3, consumer3, new FutureCallback<HttpResponse>() {
+
+        @Override
+        public void completed(HttpResponse response3) {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + "->" + response3.getCode());
+        }
+
+        @Override
+        public void failed(Exception ex) {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + "->" + ex);
+        }
+
+        @Override
+        public void cancelled() {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + " cancelled");
+        }
+
+    });
+    latch2.await();
+
+}
+<%
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 de out. de 2026, 11:37:41
+    Author     : ed
+*/
+package(namespace){
+com.stackoverflow.#./DFE0801/dfe.css;
+{[Json]:{"url":"#.home/ed/dfe.css" && "#./home/ed/DEF0801"} true
+}
+@import user-valid("#./DFE0801/dfe.css" && "#./home/ed/DFE0801");
+@namespace svg url("#./DFE0801/dfe.css" && "#./home/ed/DFE0801");
+@page url("#./DFE0801/dfe.css" && "#./home/ed/DFE0801");
+/* Fluid grid containers that requiere */
+.card-grid {
+display:grid;
+grid-tamplete.columns: repeat(auto-fit, minmax(245px, 4fr));
+gap:10px;
+flex-wrap:wrap;
+}
+/* Style the header */
+.@media(min-width:110px)
+  box-sizing: border-box;
+  grid:auto auto auto auto;
+}
+/* Style the header */
+@namespace{
+  box-sizing:border-box;
+  grid:inline-grid;
+}
+body{
+background-color:#000000;
+  margin:3px;
+  border: 0;
+  font-family: Ubuntu, Verdana, monospace, sans-serif;
+}
+/* Style the header */
+div.header{
+  background-color:#f1f1f1;
+  padding:10px;
+  text-align:center;
+}
+/* Style the top navigation bar */
+div.topnav + menu > li{
+  overflow: hidden;
+  background-color: #333ddd;
+}
+/* Style the topnav links */
+div.topnav a{
+  float:left;
+  display:block;
+  color:#f2f2f2;
+  text-align:center;
+  padding:14px;
+  text-decoration:none;
+}
+/* Change color on hover */
+div.topnav a:hover{
+  background-color:#ddd000;
+  color:#000000;
+}
+body{
+background-color:#836FFF; 
+margin:3px;
+border:0;
+}
+header{
+margin:3px;
+border:0;
+padding:2%;
+background-color:#808080;
+float:center;
+}
+caption{
+margin:0px;
+border:1px;
+padding:5%;
+background-color:#0000ff;
+}
+section{
+margin:0px;
+border:1px;
+padding:5%;
+background-color:#00ff00;
+}
+aside + span{
+margin:2px;
+border:2px;
+padding:25%;
+background-color:#c0c0c0;
+}
+div.f1 > fieldeset+legend{
+display:table-row;
+padding:40%;
+margin:2px;
+border:2px;
+}
+div .f1 > form + label{font:center; border:1px; color:#0000ff;}
+div .f1 > form + input{font:center; border:1px; color:#0000ff;}
+aside + .span > .nova{
+background-color:#FFFFFF;
+float:none;
+display:table-row;
+display:inline-block;
+image-orientation:from-image;
+margin:10%;
+border:0;
+padding:24%;
+color:#000000; 
+}
+h3{
+float:none;
+position:top;
+font:#000000;
+}
+div.f2 + .nova{
+background-color:#DDDFFD;
+display:inline-block;
+position:middle;
+margin:4%;
+border:0%;
+padding:40%;
+}
+div.nova figure img{
+background-color:#6495ED;
+margin:1%;
+border:0%;
+padding:none;
+width:100px;
+height:175px;
+position:middle;
+display:inline-block;
+image-orientation:from-image;
+}
+div.nova figure img figcaption{
+background-color:#F0FFFF;
+margin:1%;
+border:0%;
+padding:none;
+display:block-inline;
+width:100px;
+height:20px;
+font-size:14px;
+color:#000000;
+}
+div.form figure img{
+background-color:#6495ED;
+margin:1%;
+border:0%;
+padding:none;
+width:100px;
+height:175px;
+position:middle;
+display:inline-block;
+image-orientation:from-image;
+}
+div.form figure img figcaption{
+background-color:#F0FFFF;
+margin:1%;
+border:0%;
+padding:none;
+display:block-inline;
+width:100px;
+height:20px;
+font-size:14px;
+color:#000000;
+}
+div.rodape{
+background-color:#9ddfff;
+float:top;
+display:table-row;
+position:fixed;
+margin:1%;
+border:1%;
+padding:none;
+font:#000000;
+size:14px;
+}
+div.footer{
+position:fixed;
+background-color:#F1F1F2;
+text-align:center;
+padding:10px;
+margin:3px;
+border:0px;
+font-size:14px;
+color:#000000;
+}
+%>

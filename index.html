@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+ 	xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+ 	version="6.0">
+ <context-param>
+     <param-name>jakarta.faces.PROJECT_STAGE</param-name>
+     <param-value>Development</param-value>
+ </context-param>
+ <servlet>
+     <servlet-name>Faces Servlet</servlet-name>
+     <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
+     <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet-mapping>
+     <servlet-name>Faces Servlet</servlet-name>
+     <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+     <welcome-file>greeting.xhtml</welcome-file>
+ </welcome-file-list>
+</web-app>
+<!Doctype html>
+<html xmlns="http://w3.org" lang="en"
+  xmlns:faces="jakart.faces"
+  xmlns:f="jakarta.faces.core"
+  xmlns:h="jakarta.faces.html"
+  xmlns:p="jakarta.faces.passthrough">
+	<h:head>
+	<meta name="keywords" content="HTML, CSS, JAVASCRIPT, PHP"/>
+        <meta name="DFE0801" content="página web conjunto de imagens"/>
+        <meta author="Ednilson Alves" properly="Republica Federativa do Brasil" content="Licença_Prolerly"/>
+        <meta name="viewport" content="width=device-width, initial-scale=2.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="refresh" content="30"/>
+        <meta name="robots" content="index, follow"/>
+	<meta charset="utf-8" lang="Pt-Br"/>
+	<meta author="Ednilson" date="202610"/> 
+	<h:link rel="stylesheet" type="text/css" href="./home/ed/DFE0801/dfe.css" media="all"/>
+	<outputStylesheet library="css" name="dfe.css"/>
+	<title>DFE0801</title>
+	</h:head>
+<h:body>
+<h:header><h:h1>INICIO DFE0801</h:h1></h:header>
+<h:article>
+<h:h3>VEJA O HISTÓRICO DE CADA IMAGEM</h:h3>
+NESTA SECÇÃO VOÇÊ ACESSA AS INFORMAÇÕES E ORIENTAÇÃO DE COMO FAZER A ESCOLHA DE SUA IMAGEM PREFERIDA.
+<p>Navegue pela página e escolha pela imagem. É Necessário preencher o formulário antes de enviar.</p>
+<h:link><a href="/home/ed/DFE0801/dfe.html">ACESSE O FORMULARIO PARA A SUA ESCOCLHA></h:link>
+</h:article>
+</h:body>
+</html>
+</xml>

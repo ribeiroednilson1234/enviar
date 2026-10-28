@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+ 	xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+ 	version="6.0">
+ <context-param>
+     <param-name>jakarta.faces.PROJECT_STAGE</param-name>
+     <param-value>Development</param-value>
+ </context-param>
+ <servlet>
+     <servlet-name>Faces Servlet</servlet-name>
+     <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
+     <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet-mapping>
+     <servlet-name>Faces Servlet</servlet-name>
+     <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+     <welcome-file>greeting.xhtml</welcome-file>
+ </welcome-file-list>
+</web-app>
+<!Doctye html>
+<html xmlns="http://w3.org" lang="en"
+  xmlns:faces="jakart.faces"
+  xmlns:f="jakarta.faces.core"
+  xmlns:h="jakarta.faces.html"
+  xmlns:p="jakarta.faces.passthrough">
+	<h:head>
+	<meta name="keywords" content="HTML, CSS, JAVASCRIPT, PHP"/>
+        <meta name="DFE0801" content="página web conjunto de imagens"/>
+        <meta author="Ednilson Alves" properly="Republica Federativa do Brasil" content="Licença_Prolerly"/>
+        <meta name="viewport" content="width=device-width, initial-scale=2.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="refresh" content="30"/>
+	<meta charset="utf-8" lang="Pt-Br"/>
+	<meta author="Ednilson" date="202610"/> 
+	<h:link rel="stylesheet" type="text/css" href="./DFE0801/dfe.css" media="all"/>
+	<outputStylesheet library="css" name="dfe.css"/>
+	<title>DFE0801</title>
+	</h:head>
+<h:body>
+<h:header><h1>Formulário DFE0801</h1></header><
+<section>
+	<h3>VEJA O HISTÓRICO DE CADA IMAGEM</h3>
+	<p><b>Navegue pela página e escolha pela imagem. É Necessário preencher o formulário antes de enviar.</b></p>
+</section>
+<caption>
+<h:div class="nova">
+    <h:div class="f1">
+<h:fieldset>
+<h:legend>DADOS CADASTRAIS PARA CONTRATO DE CONCURSADO</h:legend>
+<h:form method="POST" name="DFE0801" id="DFE0801" action="pdo.php" enctype="multipart/form-data">
+		<h:outputLabel for="nome" id="nome">Nome:</h:outputLabel><br>
+			<h:inputText type="text" name="Nome" id="Nome" placeholder="Nome" size="200px" maxlengeth="60" required><br>
+		<h:outputLabel for="idade" id="idade">Idade:</h:outputLabel><br>
+			<h:inputText type="date" name="Idade" id="Idade" placeholder="Idade" size="200px" maxlengeth="60" required><br>
+		<h:outputLabel for="identidade" id="identidade">Identidade:</h:outputLabel><br>
+			<h:inputText type="text" name="Identidade" id="Identidade" placeholder="Identidade" size="200px" maxlengeth="60" required><br>
+		<h:outputLabel for="CPF" id="CPF">CPF:</h:outputLabel><br>
+			<h:inputText type="number" name="CPF" id="CPF" placeholder="CPF" size="200px" required><br><br>
+		<h:outputLabel for="seletor" id="selector_imagem" class="button-upload">Escolher a imagem para enviar</h:outputLabel>
+			<h:inputFile type="file" id="seletor_imagem" class="input-hidden" accept="./DFE0800/*.jpg" value="enviar" size="200px" maxlengeth="60px" required>
+
+<h:commandButton input for="selector" type="button" name="DFE0801" id="Contratado" value="Enviar">
+<h:commandButton input type="reset" id="Limpar" value="Limpar">
+</h:form>
+</h:fieldset>
+    </h:div>
+<h3>CONCURSADOS DISPONÍVEIS</h3>
+    <h:div class="f2">
+<fieldset>
+<legend>CONCURSADO</legend>
+<h:form method="POST" name="DFE0802" id="DFE0802" action="<?php echo htmlspecialchars($_SERVER['$PHP_SELF'])?>"enctype="multipart/form-data">
+<h:outputLabel for="selector_imagem">Escolha a imagem do concursado</h:outputLabel>
+<h:selectManyListbox select id="selector_imagem" >
+	<f:selectItem option value="001" data-legenda="Concursado.*_file">Concursado 001</f:selectItem option>
+	<f:selectItem option value="002" data-legenda="Concursado.*_file">Concursado 002</f:selectItem option>
+	<f:selectItem option value="003" data-legenda="Concursado.*_file">Concursado 003</f:selectItem otption>
+	<f:selectItem option value="004" data-legenda="Concursado.*_file">Concursado 004</f:selectItem option>
+</h:selectManyListbox select>
+    <script>
+    const selector = document.getElementById('selector_imagem');
+    const imagem = document.getElementById('*');
+    const legend = document.getElementById('Concursado.*_file');
+    selector.addEventListener('change', function(Concursado.*_file) {
+    const opcaoSelecionada = selector.options[selector.selectedIndex];
+    image.src = opcaoSelecionada.value . id;
+    legenda.textContent = opcaoSelecionada.getAttribute('data-legenda');
+    });
+    </script>
+      <figure>
+      	<h:graphicImage img src="1.jpg" alt="Concursado*" id="001" name="Nome" value="Concursado.*_file" data-legenda="Concursado.*_file">
+      	<figcaption id="Concursado 001" value="Concursado.*_file" maxlengeth="60" size="200px" placeholder="1.jpg" required>CONCURSADO 001</figcaption>
+      </figure>
+      <figure>
+      	<h:graphicImage img src="2.jpg" alt="Concursado*" id="002" name="Nome" value="Concursado.*_file" data-legenda="Concursado.*_file">
+      	<figcaption id="Concursado 002" value="Concursado.*_file" maxlengeth="60" size="200px" placeholder="2.jpg" required>CONCURSADO 002</figcaption>
+      </figure>
+      <figure>
+      	<h:graphicImage img src="3.jpg" alt="Concursado*" id="003" name="Nome" value="Concursado.*_file" data-legenda="Concursado.*_file">
+      	<figcaption id="Concursado 003" value="Concursado.*_file" maxlengeth="60" size="200px" placeholder="3.jpg" required>CONCURSADO 003</figcaption>
+      </figure>
+      <figure>
+      	<h:graphicImage img src="4.jpg" alt="Concursado*" id="004" name="Nome" value="Concursado.*_file" data-legenda="Concursado.*_file">
+      	<figcaption id="Concursado 004" value="Concursado.*_file" maxlengeth="60" size="200px" placeholder="4.jpg" required>CONCURSADO 004</figcaption>
+      </figure>
+               
+    <h:commandButton input select="file" type="submit" name="Concursado.*_file" id="Cadastro" value="Enviar" data-legenda="Concursado.*_file">
+    <h:commandButton input type="reset" id="Limpar" value="Limpar">
+    </h:form>
+    </fieldset>
+    </h:div>
+</h:div>  
+</caption>
+<h:footer><h:div class="rodape">&copy2018-Direitos Reservados-Licença Properly</h:div></h:footer>
+</h:body>
+</html>
+</xml>
