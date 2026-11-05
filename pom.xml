@@ -16,4 +16,13 @@
 	<version>4.4.0</version>
 </dependency>
     <name>ServerForms</name>
+	<artifactid>enviar</artifactid>
+	<distributionManagement>
+   	<repository>
+     	<id>github</id>
+     	<name>GitHub Principalribeiroednilson1234-main Apache Maven Packages</name>
+     	<url>https://maven.pkg.github.com/ENVIAR/ribeiroednilson1234-patch-enviar-1</url>
+   </repository>
+</distributionManagement>
 </project>
+mvn deploy
