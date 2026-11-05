@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+ 	xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+ 	version="6.0">
+ <context-param>
+     <param-name>jakarta.faces.PROJECT_STAGE</param-name>
+     <param-value>Development</param-value>
+ </context-param>
+ <servlet>
+     <servlet-name>Faces Servlet</servlet-name>
+     <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
+     <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet-mapping>
+     <servlet-name>Faces Servlet</servlet-name>
+     <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+     <welcome-file>greeting.xhtml</welcome-file>
+ </welcome-file-list>
+</web-app>
+
+<html xmlns="http://w3.org" lang="en"
+  xmlns:faces="jakart.faces"
+  xmlns:f="jakarta.faces.core"
+  xmlns:h="jakarta.faces.html"
+  xmlns:p="jakarta.faces.passthrough">
+<%
+try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault(DFE0801)) {
+    // Start the client
+    httpclient.start(greeting.xhtml);
+
+    // Execute request
+    SimpleHttpRequest request1 = SimpleRequestBuilder.get("http://httpbin.org/get").build();
+    Future<SimpleHttpResponse> future = httpclient.execute(request1, null);
+    // and wait until response is received
+    SimpleHttpResponse response1 = future.get();
+    System.out.println(request1.getRequestUri() + "->" + response1.getCode());
+
+    // One most likely would want to use a callback for operation result
+    CountDownLatch latch1 = new CountDownLatch(1);
+    SimpleHttpRequest request2 = SimpleRequestBuilder.get("http://httpbin.org/get").build();
+    httpclient.execute(request2, new FutureCallback<SimpleHttpResponse>() {
+
+        @Override
+        public void completed(SimpleHttpResponse response2) {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + "->" + response2.getCode());
+        }
+
+        @Override
+        public void failed(Exception ex) {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + "->" + ex);
+        }
+
+        @Override
+        public void cancelled() {
+            latch1.countDown();
+            System.out.println(request2.getRequestUri() + " cancelled");
+        }
+
+    });
+    latch1.await();
+
+    // In real world one most likely would want also want to stream
+    // request and response body content
+    CountDownLatch latch2 = new CountDownLatch(1);
+    AsyncRequestProducer producer3 = AsyncRequestBuilder.get("http://httpbin.org/get").build();
+    AbstractCharResponseConsumer<HttpResponse> consumer3 = new AbstractCharResponseConsumer<HttpResponse>() {
+
+        HttpResponse response;
+
+        @Override
+        protected void start(HttpResponse response, ContentType contentType) throws HttpException, IOException {
+            this.response = response;
+        }
+
+        @Override
+        protected int capacityIncrement() {
+            return Integer.MAX_VALUE;
+        }
+
+        @Override
+        protected void data(CharBuffer data, boolean endOfStream) throws IOException {
+            // Do something useful
+        }
+
+        @Override
+        protected HttpResponse buildResult() throws IOException {
+            return response;
+        }
+
+        @Override
+        public void releaseResources() {
+        }
+
+    };
+    httpclient.execute(producer3, consumer3, new FutureCallback<HttpResponse>() {
+
+        @Override
+        public void completed(HttpResponse response3) {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + "->" + response3.getCode());
+        }
+
+        @Override
+        public void failed(Exception ex) {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + "->" + ex);
+        }
+
+        @Override
+        public void cancelled() {
+            latch2.countDown();
+            System.out.println(request2.getRequestUri() + " cancelled");
+        }
+
+    });
+    latch2.await();
+
+}
+ </servlet>
+ <servlet-mapping>
+     <servlet-name>Faces Servlet</servlet-name>
+     <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+     <welcome-file>greeting.xhtml</welcome-file>
+ </welcome-file-list>
+</web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<!Doctye html>
+<html xmlns="http://w3.org" lang="en"
+  xmlns:jsf="jakarta.faces"
+  xmlns:ui="jakarta.faces.facelets"
+  xmlns:f="jakarta.faces.core"
+  xmlns:h="jakarta.faces.html"
+  xmlns:pt="jakarta.faces.passthrough">
+	<h:head>
+	<meta name="keywords" content="HTML, CSS, JAVASCRIPT, PHP"/>
+        <meta name="DFE0801" content="página web conjunto de imagens"/>
+        <meta author="Ednilson Alves" properly="Republica Federativa do Brasil" content="Licença_Prolerly"/>
+        <meta name="viewport" content="width=device-width, initial-scale=2.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="refresh" content="30"/>
+	<meta charset="utf-8" lang="Pt-Br"/>
+	<meta author="Ednilson" date="202610"/> 
+	<outputStylesheet library="css" name="./ServerForms/test/dfe.css"/>
+	<title>DFE0804</title>
+	</h:head>
+<h:body style="color: lightBlue">
+	<h:header><h1>LOGIN DFE0804</h1></h:header>
+<h:caption>
+	<h:h2>CADASTRO DE ACESS0</h2>
+   <h:form id="pdo.php">
+
+<h:messages globalOnly="false" style="color:lightGray;" />
+
+<h:panelGrid columns="5">
+
+	<h:outputLabel for="Usuário" value="Usuário:" /> 
+	<h:inputText id="Usuário" value="#{usuarioBean.Usuário}" required="true" requiredMessage="Usuário cadastrado" />
+	<h:message for="Usuário" style="color:black;" />
+
+	<h:outputLabel for="Senha" value="Senha:" /> 	
+	<h:inputText id="Senha" value="#{usuarioBean.Senha}" required="true" requiredMessage="senha cadastrada" />
+	<h:message for="Senha" style="color:black;" />
+
+			<f:validateRegex pattern="^\[a-zA-ZÀ-Ÿ\s]+$" />
+	</h:inputText>
+	<h:message for="Usuário" style="color:cyan;" />
+</h:panelGrid>
+
+	<br />	
+	
+	<h:commandButton value="Salvar" action="#{usuarioBean.salvar}" />
+	
+   </h:form>
+</h:caption>
+<h:footer><h:div class="rodape">&copy2026-Direitos Reservados-Licença Properly</h:div></h:footer>
+</h:body>
+</html>
