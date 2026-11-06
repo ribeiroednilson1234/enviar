@@ -95,7 +95,7 @@ $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 	<input type="text" name="Nome" value"Nome" id="curto.php" required>
 	<label for="Idade">Idade:</label>
 	<input type="text" name="Idade" value="Idade" id="curto.php" required>
-	<lable for="Identidade"><Identidade:</lable>
+	<label for="Identidade">Identidade:</label>
 	<input type="text" name="Identidade" value="Identidade" id="curto.php" required>
 	<label for="Concursado">Concursado:</label>
 	<input type="file" name="Concursado" value="Concursado.*_file" id="curto1.php" required>
