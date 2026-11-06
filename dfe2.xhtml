@@ -1,0 +1,129 @@
+package com.exemplo.controller;
+
+import jakarta.enterprise.context.RequestScoped;
+import jakarta inject.Named;
+import jakarta.ws.rs.Path;
+import com.exemplo.model.UserBean;
+
+import java.util.ArraysList;
+import java.util.List;
+
+@Path("/users")
+@Named
+@RequestScoped
+public class UserController(){
+public class UsuarioBean() {
+
+	private string nome;
+	private string CPF;
+	private string Endereço;
+	private string Correio_eletrônico;
+	
+	public string salvar() {
+	   System.out.println("Nome: " + this.nome);
+	   System.out.println("CPF: " + this.CPF);
+	   System.out.println("Endereço: " + this.Endereço);
+	   System.out.println("Correio_eletrônico: " + this.Correio_eletrônico);
+	   
+	   return "sucesso?faces-redirect=true";
+	}
+
+	public String getName() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome= nome;
+	}
+
+	public String getCPF() {
+		return CPF;
+	}
+
+	public void setCPF(String CPF) {
+		this.CPF= CPF;
+	}
+
+	public String getEndereço() {
+		return Endereço;
+	}
+
+	public void setEndereço(String Endereço) {
+		this.Endereço= Endereço;
+	}
+
+	public String getCorreio_eletônico() {
+		return Correio_eletrônico;
+	}
+
+	public void setCorreio_eletrônico(String Correio_eletrônico) {
+		this.Correio_eletrônico= Correio_eletrônico;
+	}
+}
+ </servlet>
+ <servlet-mapping>
+     <servlet-name>Faces Servlet</servlet-name>
+     <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+     <welcome-file>greeting.xhtml</welcome-file>
+ </welcome-file-list>
+</web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<!Doctye html>
+<html xmlns="http://w3.org" lang="en"
+  xmlns:jsf="jakarta.faces"
+  xmlns:ui="jakarta.faces.facelets"
+  xmlns:f="jakarta.faces.core"
+  xmlns:h="jakarta.faces.html"
+  xmlns:pt="jakarta.faces.passthrough">
+	<h:head>
+	<meta name="keywords" content="HTML, CSS, JAVASCRIPT, PHP"/>
+        <meta name="DFE0801" content="página web conjunto de imagens"/>
+        <meta author="Ednilson Alves" properly="Republica Federativa do Brasil" content="Licença_Prolerly"/>
+        <meta name="viewport" content="width=device-width, initial-scale=2.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="refresh" content="30"/>
+	<meta charset="utf-8" lang="Pt-Br"/>
+	<meta author="Ednilson" date="202610"/> 
+	<outputStylesheet library="css" name="./ServerForms/test/dfe.css"/>
+	<title>DFE0802</title>
+	</h:head>
+<h:body style="color: lightBlue">
+	<h:header><h1>FORMULARIO DB_1</h1></h:header>
+<h:caption>
+	<h:h2>CADASTRO DE USUARIO LOCAL</h2>
+   <h:form id="pdo.php">
+
+<h:messages globalOnly="false" style="color:lightGray;" />
+
+<h:panelGrid columns="5">
+
+	<h:outputLabel for="nome" value="Nome:" /> 
+	<h:inputText id="nome" value="#{usuarioBean.nome}" required="true" requiredMessage="Usuário do sistema" />
+	<h:message for="nome" style="color:black;" />
+
+	<h:outputLabel for="CPF" value="CPF:" /> 	
+	<h:inputText id="CPF" value="#{usuarioBean.CPF}" required="true" requiredMessage="CPF do Usuário" />
+	<h:message for="CPF" style="color:black;" />
+
+	<h:outputLabel for="Endereço" value="Endereço:" /> 
+	<h:inputText id="Endereço" value="#{usuarioBean.Endereço}" required="true" requiredMessage="Endereço do usuário" />
+	<h:message for="Endereço" style="color:black;" />
+
+	<h:outputLabel for="Correio_eletrônico" value="Correio_eletrônico:" /> 
+	<h:inputText id="Correio_eletrônico" value="#{usuarioBean.Correio_eletrônico}" required="true" requiredMessage="E-mail do usuário do sistema" />
+		<f:validateRegex pattern="[\w\.-]+@[\w\.-]+\.\w+" />
+	</h:inputText>
+	<h:message for="Correio_eletônico" style="color:cyan;" />
+</h:panelGrid>
+
+	<br />	
+	
+	<h:commandButton value="Salvar" action="#{usuarioBean.salvar}" />
+	
+   </h:form>
+</h:caption>
+<h:footer><h:div class="rodape">&copy2026-Direitos Reservados-Licença Properly</h:div></h:footer>
+</h:body>
+</html>

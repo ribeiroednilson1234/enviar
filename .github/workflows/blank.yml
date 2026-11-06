@@ -1,0 +1,65 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "Principalribeiroednilson1234-main" branch
+  push:
+    branches: [ "Principalribeiroednilson1234-main" ]
+  pull_request:
+    branches: [ "Principalribeiroednilson1234-patch-enviar-1" ], [ "Principalribeiroednilson1234-patch-enviar" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build: ServerForms
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.enviar</groupId>
+    <artifactId>enviar</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>17</maven.compiler.release>
+        <exec.mainClass>com.enviar.Enviar</exec.mainClass>
+    </properties>
+    <dependency>
+	<groupId>org.apache.kafka</groupId>
+	<artifactId>kafka-streams</artifactId>
+	<version>4.4.0</version>
+</dependency>
+    <name>ServerForms</name>
+	<artifactid>enviar</artifactid>
+	<distributionManagement>
+   	<repository>
+     	<id>github</id>
+     	<name>GitHub Principalribeiroednilson1234-main Apache Maven Packages</name>
+     	<url>https://maven.pkg.github.com/ENVIAR/ribeiroednilson1234-patch-enviar-1</url>
+   </repository>
+</distributionManagement>
+</project>
+mvn deploy
+      
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
