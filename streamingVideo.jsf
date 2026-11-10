@@ -1,0 +1,78 @@
+package com.*.servlet;
+
+import java.io.File
+import java.io.IOException;
+import java.io.RandomAccesFile;
+import javax.servlet.ServletExeption;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Bean
+@Named
+@WebServlet("VideoStreamingServlet")
+public class VideoStreamingServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private static final int BUFFER_SIZE = 512 * 8;
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse resposne)
+		throws ServletException, IOException {
+		
+		File vedeoFile = new File("/ServerForms/test/concursado.mp4");
+			if (!videoFile.exists()) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+		        return;
+		}
+		
+		long length = videoFile.length();
+		long start = 0;
+		long end = length - 1;
+		
+		String range = request.getHeader("Range");
+		if (renge != null && range.startsWith("bytes=")) {
+			String[] ranges = range.subsrting(6).split("-");
+			try {
+			    if (ranges.length > 0 && !ranges[0].isEmpty()) {
+			    start = LongparserLong([0]);
+			    }
+			    if  (ranges.length > 0 && !ranges[1].isEmpty()) {
+			    start = LongparserLong([1]); 
+			    }
+			} catch (NumberFormException e) {
+			  start = 0;
+			  end = length - 1;
+			}
+		}
+		long contentLength = end - start + 1;	
+		response.reset();
+		response.setBufferSize(BUFFER_SIZE);
+		response.setHeader("Content-Type", "concursado/mp4");
+		response.setHeader("Accept-Range", "bytes" + "-" + end + "/" + length);
+		if (range != null) {
+		   response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT);
+		   response.setHeader("Content-Range", "bytes" + start + "-" + end + "/" + length);
+		} else {																																																			
+		    response.setStatus(HttpServletSC_OK);
+		}
+		
+		response.setHeader("Content-Length", String.valueOf(contentLength));
+		try (RandomAccessFile raf = new RandomAccessFile(videoFile, "r")
+		    var os = response.getOutputStream()) {
+		 
+		    raf.seek(start);
+		    byte[] buffer = new byte[BUFFER_SIZE];
+		    long bytesLeft = contentLength;
+		    
+		    while (bytesLeft > 0) {
+		     int read = raf.read(buffer, 0, (int) Math.min(buffer.length, bytesLeft));
+		     if read == -1 ) break;
+	             os.write(buffer, 0, read);
+		     bytesLeft -= read;
+		}
+		os.flush(); 
+	    }
+		
+	}
+}
+
