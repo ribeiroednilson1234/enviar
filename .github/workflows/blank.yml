@@ -33,6 +33,11 @@ jobs:
       - name: Run a multi-line script
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<html xmlns="http://w3.org" lang="en"
+      xmlns:faces="jakarta.faces"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="jakarta.faces.passthrough">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.enviar</groupId>
     <artifactId>enviar</artifactId>
@@ -47,7 +52,7 @@ jobs:
 	<groupId>org.apache.kafka</groupId>
 	<artifactId>kafka-streams</artifactId>
 	<version>4.4.0</version>
-</dependency>
+    </dependency>
     <name>enviar</name>
 	<artifactid>local.enviar</artifactid>
 	<distributionManagement>
