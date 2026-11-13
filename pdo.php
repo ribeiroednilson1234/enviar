@@ -69,6 +69,12 @@ $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 ?>;
 
 <!DOCTYPE html>
+<html xmlns="http://w3.org" lang="en"
+  xmlns:jsf="jakarta.faces"
+  xmlns:ui="jakarta.faces.facelets"
+  xmlns:f="jakarta.faces.core"
+  xmlns:h="jakarta.faces.html"
+  xmlns:pt="jakarta.faces.passthrough">
 <head>
 	<meta name="keywords" content="HTML, CSS, JAVASCRIPT, PHP, TypeScript, json">
         <meta name="ENVIAR" content="página web conjunto de imagens">
