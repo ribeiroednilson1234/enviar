@@ -159,7 +159,7 @@ gap:10px;
 flex-wrap:wrap;
 }
 /* Style the header */
-.@media(min-width:110px)
+.@media(min-width:90px)
   box-sizing: border-box;
   grid:auto auto auto auto;
 }
@@ -263,20 +263,21 @@ padding:40%;
 }
 div.nova figure img{
 background-color:#6495ED;
+display: inline-block;
+vertical-align: middle;
 margin:1%;
 border:0%;
-padding:none;
+padding:float;
 width:100px;
 height:175px;
 position:middle;
-display:inline-block;
 image-orientation:from-image;
 }
 div.nova figure img figcaption{
 background-color:#F0FFFF;
 margin:1%;
 border:0%;
-padding:none;
+padding:float;
 display:block-inline;
 width:100px;
 height:20px;
@@ -287,7 +288,7 @@ div.form figure img{
 background-color:#6495ED;
 margin:1%;
 border:0%;
-padding:none;
+padding:float;
 width:100px;
 height:175px;
 position:middle;
@@ -298,7 +299,7 @@ div.form figure img figcaption{
 background-color:#F0FFFF;
 margin:1%;
 border:0%;
-padding:none;
+padding:float;
 display:block-inline;
 width:100px;
 height:20px;
@@ -312,7 +313,7 @@ display:table-row;
 position:fixed;
 margin:1%;
 border:1%;
-padding:none;
+padding:float;
 font:#000000;
 size:14px;
 }
