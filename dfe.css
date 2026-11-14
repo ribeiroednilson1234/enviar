@@ -267,7 +267,7 @@ display: inline-block;
 vertical-align: middle;
 margin:1%;
 border:0%;
-padding:float;
+padding:inherit;
 width:100px;
 height:175px;
 position:middle;
@@ -277,7 +277,7 @@ div.nova figure img figcaption{
 background-color:#F0FFFF;
 margin:1%;
 border:0%;
-padding:float;
+padding:inherit;
 display:block-inline;
 width:100px;
 height:20px;
@@ -288,7 +288,7 @@ div.form figure img{
 background-color:#6495ED;
 margin:1%;
 border:0%;
-padding:float;
+padding:inherit;
 width:100px;
 height:175px;
 position:middle;
@@ -299,7 +299,7 @@ div.form figure img figcaption{
 background-color:#F0FFFF;
 margin:1%;
 border:0%;
-padding:float;
+padding:inherit;
 display:block-inline;
 width:100px;
 height:20px;
