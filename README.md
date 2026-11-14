@@ -1,2 +1,3 @@
 # enviar
-Formulario e seleção de imagem pora envio
+Formulario e seleção de imagem.
+Envio em streaming de video.
