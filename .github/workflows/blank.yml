@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "Principalribeiroednilson1234-main" branch
   push:
-    branches: [ "Principalribeiroednilson1234-main" ]
+    branches: [ "Principalribeiroednilson1234-main" ], [ "Principalribeiroednilson1234-patch-10filiall" ], [ "Principalribeiroednilson1234-patch-enviar-1" ]
   pull_request:
     branches: [ "Principalribeiroednilson1234-patch-enviar-1" ], [ "Principalribeiroednilson1234-patch-enviar" ]
 
