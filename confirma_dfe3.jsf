@@ -1,0 +1,110 @@
+import jakarta.io.seriarizable;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta inject.Named;
+import jakarta.ws.rs.Path;
+import com.exemplo.model.UserBean;
+
+import java.util.ArraysList;
+import java.util.List;
+
+@Path("/users")
+@Named
+@ViewScoped
+@RequestScoped
+public class UsuarioBean(ServerForms){
+
+	private string Pais
+	private string Estado;
+	private string Cidade;
+	private string Bairro;
+	
+	public string salvar() {
+	   System.out.println("Pais: " + this.Pais);
+	   System.out.println("Estado: " + this.Estado);
+	   System.out.println("Cidade: " + this.Cidade);
+	   System.out.println("Bairro: " + this.Bairro);
+	   
+	   return "sucesso?faces-redirect=true";
+	}
+
+	public String getPais() {
+		return Pais;
+	}
+
+	public void setPais(String Pais) {
+		this.Pais= Pais;
+	}
+
+	public String getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(String Estado) {
+		this.Estado= Estado;
+	}
+
+	public String getCidade() {
+		return Cidade;
+	}
+
+	public void setCidade(String Cidade) {
+		this.Cidade= Cidade;
+	}
+
+	public String getBairro() {
+		return Bairro;
+	}
+
+	public void setBairro(String Bairro) {
+		this.Bairro= Bairro;
+	}
+}
+</servlet>
+ <servlet-mapping>
+     <servlet-name>ServerForms</servlet-name>
+     <url-pattern>*.xhtml</url-pattern>
+</servlet-mapping>
+<welcome-file-list>
+     <welcome-file>confirma_dfe3.xhtml</welcome-file>
+</welcome-file-list>
+</web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<!Doctye html>
+<html xmlns="http://w3.org" lang="en"
+  xmlns:jsf="jakarta.faces"
+  xmlns:ui="jakarta.faces.facelets"
+  xmlns:f="jakarta.faces.core"
+  xmlns:h="jakarta.faces.html"
+  xmlns:pt="jakarta.faces.passthrough">
+	<h:head>
+	<meta name="keywords" content="HTML, CSS, JAVASCRIPT, PHP"/>
+        <meta name="ENVIAR" content="página web conjunto de imagens"/>
+        <meta author="Ednilson Alves" properly="Republica Federativa do Brasil" content="Licença_Prolerly"/>
+        <meta name="viewport" content="width=device-width, initial-scale=2.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="refresh" content="30"/>
+	<meta charset="utf-8" lang="Pt-Br"/>
+	<meta author="Ednilson" date="202610"/>
+	<outputStylesheet library="css" name="./ServerForms/test/dfe.css"/>
+        <title>CONFIRMA O FORMULARIO DFE0803</title>
+	</h:head>
+<h:body style="color: lightBlue">
+
+	<h:header><h1>CONFIRMA O FORMULÁRIO DFE0803</h1></h:header>
+
+<h:messages globalOnly="false" style="color:lightGray;" />
+
+<h:panelGrid columns="1">
+
+  <h:caption>
+  <h3>Operação bem sucedida dados gravados</h3>
+  <p>Agradecimentos<h:outputText value="#{usuarioBean.nome}" />.</p>
+  <h:link outcome="#/public_html/greeting.xhtml" value="Voltar para o INÍCIO" />
+  </h:caption>
+</h:panelGrid>
+<h:footer><h:div class="rodape">&copy2026-Direitos Reservados-Licença Properly</h:div></h:footer>
+</h:body>
+</html>
+}
