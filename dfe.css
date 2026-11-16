@@ -1,4 +1,4 @@
-css
+@function --Dfe.enviar
 /* Fluid grid containers that requiere */
 .card-grid {
 display:grid;
@@ -61,13 +61,13 @@ float:center;
 caption{
 margin:0px;
 border:1px;
-padding:5%;
+padding:10%;
 background-color:#0000ff;
 }
 section{
 margin:0px;
 border:1px;
-padding:5%;
+padding:15%;
 background-color:#00ff00;
 }
 aside + span{
@@ -92,7 +92,7 @@ display:inline-block;
 image-orientation:from-image;
 margin:10%;
 border:0;
-padding:24%;
+padding:20%;
 color:#000000; 
 }
 h3{
@@ -103,29 +103,32 @@ font:#000000;
 div.f2 + .nova{
 background-color:#DDDFFD;
 display:inline-block;
-position:middle;
+vertical-align:center;
+text-align:center;
 margin:4%;
 border:0%;
 padding:40%;
 }
 div.nova figure img{
 background-color:#6495ED;
-display: inline-block;
-vertical-align: middle;
 margin:1%;
 border:0%;
 padding:inherit;
 width:100px;
 height:175px;
-position:middle;
+display:inline-block;
+vertical-align:center;
+text-align:center;
 image-orientation:from-image;
 }
 div.nova figure img figcaption{
 background-color:#F0FFFF;
 margin:1%;
 border:0%;
-padding:inherit;
-display:block-inline;
+padding:20px;
+display:inline-block;
+vertical-align:center;
+text-align:center;
 width:100px;
 height:20px;
 font-size:14px;
@@ -138,8 +141,9 @@ border:0%;
 padding:inherit;
 width:100px;
 height:175px;
-position:middle;
 display:inline-block;
+vertical-align:center;
+text-align:center;
 image-orientation:from-image;
 }
 div.form figure img figcaption{
@@ -147,7 +151,9 @@ background-color:#F0FFFF;
 margin:1%;
 border:0%;
 padding:inherit;
-display:block-inline;
+display:inline-block;
+vertical-align:center;
+text-align:center;
 width:100px;
 height:20px;
 font-size:14px;
@@ -155,12 +161,13 @@ color:#000000;
 }
 div.rodape{
 background-color:#9ddfff;
+padding:20px;
 float:top;
 display:table-row;
 position:fixed;
 margin:1%;
 border:1%;
-padding:float;
+padding:none;
 font:#000000;
 size:14px;
 }
@@ -168,12 +175,13 @@ div.footer{
 position:fixed;
 background-color:#F1F1F2;
 text-align:center;
-padding:10px;
+padding:20px;
+button:0;
+left:2px;
+right:2px;
+height:20px;
 margin:3px;
 border:0px;
 font-size:14px;
 color:#000000;
 }
-</xml>
-}
-%>
