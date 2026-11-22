@@ -114,8 +114,8 @@ try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault()) {
 
   <!-- Executable Targets -->
   <target name="compile" description="Compile web application">
-    <!-- ... construct web application in ${build} subdirectory, and
-            generated a ${path}.war ... -->
+    <construct web application in ${build} subdirectory, and
+            generated a ${path}.war>
   </target>
 
   <target name="deploy" description="Install web application"
