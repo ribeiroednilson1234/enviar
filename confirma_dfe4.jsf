@@ -1,7 +1,7 @@
 try (CloseableHttpAsyncClient httpclient = HttpAsyncClients.createDefault()) {
     // Start the client
     httpclient.start();
-// Execu��o de requisi��es HTTP usando API assincrona HttpClient 
+// Execução de requisições HTTP usando API assincrona HttpClient 
     // Execute request
     SimpleHttpRequest request1 = SimpleRequestBuilder.get("http://httpbin.org/get").build();
     Future<SimpleHttpResponse> future = httpclient.execute(request1, null);
@@ -117,22 +117,22 @@ import java.util.List;
 @RequestScoped
 public class UsuarioBean(ServerForms){
 
-	private string Usuário;
+	private string UsuÃ¡rio;
 	private string Senha;
 		
 	public string salvar() {
-	   System.out.println("Usuário: " + this.Usuário);
+	   System.out.println("UsuÃ¡rio: " + this.UsuÃ¡rio);
 	   System.out.println("Senha: " + this.Senha);
 	   	   
 	   return "sucesso?faces-redirect=true";
 	}
 
-	public String getUsuário() {
-		return Usuário;
+	public String getUsuÃ¡rio() {
+		return UsuÃ¡rio;
 	}
 
-	public void setUsuário(String Usuário) {
-		this.Usuário= Usuário;
+	public void setUsuÃ¡rio(String UsuÃ¡rio) {
+		this.UsuÃ¡rio= UsuÃ¡rio;
 	}
 
 	public String getSenha() {
@@ -162,8 +162,8 @@ public class UsuarioBean(ServerForms){
   xmlns:p="jakarta.faces.passthrough">
 	<h:head>
 	<meta name="keywords" content="HTML, CSS, JAVASCRIPT, PHP"/>
-        <meta name="ENVIAR" content="página web conjunto de imagens"/>
-        <meta author="Ednilson Alves" properly="Republica Federativa do Brasil" content="Licença_Prolerly"/>
+        <meta name="ENVIAR" content="pÃ¡gina web conjunto de imagens"/>
+        <meta author="Ednilson Alves" properly="Republica Federativa do Brasil" content="LicenÃ§a_Prolerly"/>
         <meta name="viewport" content="width=device-width, initial-scale=2.0"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta http-equiv="refresh" content="30"/>
@@ -174,19 +174,19 @@ public class UsuarioBean(ServerForms){
 	</h:head>
 <h:body style="color: lightBlue">
 
-	<h:header><h1>CONFIRMA O FORMULÁRIO DFE0804</h1></h:header>
+	<h:header><h1>CONFIRMA O FORMULÃRIO DFE0804</h1></h:header>
 
 <h:messages globalOnly="false" style="color:lightGray;" />
 
 <h:panelGrid columns="1">
 
   <h:caption>
-  <h3>Operação bem sucedida dados gravados</h3>
+  <h3>OperaÃ§Ã£o bem sucedida dados gravados</h3>
   <p>Agradecimentos<h:outputText value="#{usuarioBean.nome}" />.</p>
-  <h:link outcome="#/public_html/greeting.xhtml" value="Voltar para o INÍCIO" />
+  <h:link outcome="#/public_html/greeting.xhtml" value="Voltar para o INÃCIO" />
   </h:caption>
 </h:panelGrid>
-<h:footer><h:div class="rodape">&copy2026-Direitos Reservados-Licença Properly</h:div></h:footer>
+<h:footer><h:div class="rodape">&copy2026-Direitos Reservados-LicenÃ§a Properly</h:div></h:footer>
 </h:body>
 </html>
 }
