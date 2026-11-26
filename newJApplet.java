@@ -64,5 +64,5 @@ public class newJApplet extends = JApplet{
                             throw new RuntimeException("Falha no comando (Código " + exitCode + "): " + saida);
                         }  
     return saida.toString().trim();
-    }
 }
+
