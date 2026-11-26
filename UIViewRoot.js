@@ -27,7 +27,7 @@ out.println HtmlTitle(title);
 
 out.println HtmlBody(h:body) {
         
-        out.println HtmlSection(h:section);
+    out.println HtmlSection(h:section);
 	out.println HtmlArticle(h:article);
 	out.println HtmlCaption(h:caption);
 	out.println HtmlForm(h:form);
