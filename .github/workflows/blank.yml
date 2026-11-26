@@ -51,6 +51,7 @@ jobs:
     <dependency>
 	<groupId>org.apache.kafka</groupId>
 	<artifactId>kafka-streams</artifactId>
+	<artifactId>kafka-streams-cliente</artifactId>
 	<version>4.4.0</version>
     </dependency>
     <name>enviar</name>
