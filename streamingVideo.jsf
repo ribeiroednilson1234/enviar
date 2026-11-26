@@ -19,7 +19,7 @@ public class VideoStreamingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse resposne)
 		throws ServletException, IOException {
 		
-		File vedeoFile = new File("/ServerForms/test/concursado.mp4");
+		File vedeoFile = new File("/enviar/concursado.mp4");
 			if (!videoFile.exists()) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		        return;
