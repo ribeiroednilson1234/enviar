@@ -1,0 +1,117 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccesFile;
+import javax.servlet.ServletExeption;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import jakarta.io.seriarizable;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta inject.Named;
+import jakarta.ws.rs.Path;
+import com.enviar.model.UserBean;
+
+import java.util.ArraysList;
+import java.util.List;
+
+//*Habilitar Apache CouchDB usando o javaScript(fetch). Com navegador o configure no CORS no CouchDB(OBRIGARTÓRIO): no CORS habilitar o Domínio(*)
+//*Criar o banco de dados no painel(_utils), em databases dê o nome de banco concursadoContratado
+<!DOCTYPE html>
+<html xmlns="http://w3.org"
+  xmlns:f="http://jcp.org"
+  xmlns:f="jakarta.faces.core"
+  xmlns:h="jakarta.faces.html"
+  xmlns:ui="jakarta.faces.facelets"
+  xmlns:p="jakarta.faces.passthrough">
+<f:param html lang="pt-br">	
+<h:outputText head>
+	<meta name="keywords" content="HTML, CSS, JAVASCRIPT, PHP" />
+        <meta name="ENVIAR" content="página web conjunto de imagens" />
+        <meta name="author:Ednilson Alves Ribeiro" properly="Republica Federativa do Brasil" content="Licença_Properly" />
+        <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="refresh" content="30" />
+	<meta charset="UTF-8" lang="pt-BR" />
+	<meta name="author:Ednilson" date="202610" /> 
+	<link rel="stylesheet" type="text/css" ="/enviar/dfe.css" media="all" />
+	<outputStylesheet library="css" name="/home/ed/enviar/dfe.css" />
+	<title>concursadoContratado adicionado no CouchDB</title>
+<body>
+<h2>Salvar no CouchDB</h2>
+<input type="text" id="nome" placeholder="concursadoContratado">
+<button onclick="salvarDados()">SALVAR</button>
+
+<h2>Objetos salvos</h2>
+<button on click="listarDados()">Atualizar a lista de objetos salvos</button>
+<ul id"lista">
+</ul>
+<script>
+	const DB_URL = 'http://127.0.0';
+	const USUÁRIO = 'admin';
+	const SENHA = 'concursado';
+
+	// Cabeçalho com autenticação base64//
+	const headers = {
+	  'Content-Type': 'application/json',
+	  'Authoriation': 'Basic' + btoa(USUARIO + ':' + SENHA)
+	};
+	
+	//Função para inserir um documento (POST)
+	async function salvarDados() {
+	  const nome = document.getElementById('nomeInput').value;
+	  if (!nome) return alert('Digite um nome para enviar !');
+	  
+	  const documento = {
+	    nome: nome,
+	    criado_em: new Date().toISOStrimg()   
+	  };
+	  
+	  try {
+	    const resposta = await fetch(DB_URL, {
+	    method: 'POST',
+	    headers: headers,
+	    body: JSON.stringify(documento)
+	  });
+	     
+	  const resultado = await resposta.json();
+	    if (resultado.ok) {
+	    alert('Gravado com sucesso ! ID: ' + resultado.id);
+	    document.getElementById('nomeInput').value = '';
+	    listarDados();
+	    } else {
+	      alert('Erro na Solicitação:' + resultado.reason);
+	    }
+	  } catch (erro) {
+	    console.error('Erro na solicitação:', erro);													
+	  }
+	}
+	// Função para buscar todos os documentos (GET)
+	async function listaDados() {
+	  try {
+	    const resposta = await fetch(`${DB_URL}/_all_docs?include_docs=true`, {
+	      method: 'GET',
+	      header: headers
+	    });
+	
+	    const dados = await resposta.json();
+	    const listaEl = document.getElementById('lista');
+	    listaEl.innerHTML = '';
+	    
+	    dados.rows.forEach(item => {
+	     conta li = document.creatElement('li');
+	     li.textContent = `${item.doc.nome} (ID: ${item.id})`;
+	     listaEl.appendChild(li);
+            });
+        } catch (erro) {																									
+          console.erro('Erro ao buscar os dados:', erro);
+        }
+      }
+      
+      // Carrega os dados ao abrir a página
+      listarDados();
+</script>
+</body>	 
+</html>																		
